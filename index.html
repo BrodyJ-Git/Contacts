@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale=1.0>
+        <meta name="author" content="Brody">
+        <title>Contacts</title>
+        <style>
+            body
+            {
+                background-color: rgb(230, 208, 181);
+            }
+
+            table, th, td
+            {
+                border: 1px solid rgb(189, 169, 143);
+                border-collapse: collapse;
+            }
+
+            table
+            {
+                width: 12%;
+            }
+
+            th
+            {
+                background-color: rgb(234, 216, 191);
+                color: rgb(73, 48, 41);
+                font-weight: 800;
+            }
+
+            td
+            {
+                background-color: rgb(255, 247, 236);
+                color: rgb(47, 42, 38);
+            }
+
+            th, td
+            {
+                text-align: left;
+                padding: 12px;
+            }
+        </style>
+    </head>
+    <body> 
+        <table>
+            <tr>
+                <th>Slot #</th>
+                <th>Number</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td id="0"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td id="1"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td id="2"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td id="3"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td id="4"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td id="5"></td>
+            </tr>
+        </table>
+
+        <button id="NameButton">Get Name</button>
+
+        <script>
+            const number = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"]
+
+            for (let i = 0; i < number.length; i++)
+            {           
+                document.getElementById(i.toString()).innerHTML = number[i];
+            }
+
+            document.getElementById("NameButton").addEventListener("click", ()=> // I don't know if this is out of scope since were weren't told how to get a button to work
+            { 
+                let userSelecting = true;
+                
+                while (userSelecting == true)
+                {
+                    let chosenSlot = prompt("Please provide a slot number.");
+                    let validSlot = false;
+
+                    while (validSlot == false)
+                    {
+                        if (number[chosenSlot] != null)
+                        {
+                            alert(`You selected ${number[chosenSlot]}.`);
+                            validSlot = true;
+                        }
+                        else
+                        {
+                            chosenSlot = prompt("That name doesn't exist, please type in a valid slot");
+                        }
+                    }   
+
+                    let userChoice = prompt("Do you wish to search for another name?")
+
+                    if (userChoice.toLowerCase() != "y" && userChoice.toLowerCase() != "yes")
+                    {
+                        userSelecting = false;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
